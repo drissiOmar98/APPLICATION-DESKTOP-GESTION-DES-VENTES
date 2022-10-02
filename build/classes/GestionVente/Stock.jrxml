@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="46ed33b9-03fc-4af7-b659-82b3d48cab2d">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     societe.`id` AS id,
+     societe.`NomS` AS NomS,
+     societe.`NomResp` AS NomResp,
+     societe.`MatFiscal` AS Fix,
+     societe.`TelGSM` AS TelGSM,
+     societe.`Fax` AS Fax,
+     societe.`Email` AS Email,
+     societe.`Site` AS Site,
+     societe.`Logo` AS Logo,
+     societe.`Adresse` AS Adresse,
+     produit.`id` AS produit_id,
+     produit.`code_produit` AS code_produit,
+     produit.`reference` AS reference,
+     produit.`deseignation` AS deseignation,
+     produit.`Tva` AS Tva,
+     produit.`rangement` AS rangement,
+     produit.`fournisseur` AS fournisseur,
+     produit.`remise` AS remise,
+     produit.`prix` AS prix,
+     produit.`stock` AS stock
+FROM
+     `societe` societe,
+     `produit` produit]]>
+	</queryString>
+	<field name="code_produit" class="java.lang.String"/>
+	<field name="reference" class="java.lang.String"/>
+	<field name="deseignation" class="java.lang.String"/>
+	<field name="stock" class="java.lang.Integer"/>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="72">
+			<frame>
+				<reportElement mode="Opaque" x="-20" y="-20" width="595" height="92" backcolor="#006699" uuid="fc9fc2c7-141e-47cb-abd3-f9a1ae996a19"/>
+				<staticText>
+					<reportElement x="20" y="20" width="234" height="43" forecolor="#FFFFFF" uuid="68dc360d-be8d-4367-8825-23992a0fbc21"/>
+					<textElement>
+						<font size="34" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Stocks]]></text>
+				</staticText>
+				<image>
+					<reportElement x="318" y="0" width="277" height="64" uuid="edad8d3e-7276-4316-a08e-e0d1f6e90aaf"/>
+					<imageExpression><![CDATA["B:\\1ere TIC\\JavaProjet\\Gestion_Vente\\Gestion_Vente\\src\\Images\\logocomp.png"]]></imageExpression>
+				</image>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="13"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="21">
+			<line>
+				<reportElement x="-20" y="20" width="595" height="1" forecolor="#666666" uuid="95273b8d-9c6c-496b-9ce7-7e1e034a892b"/>
+			</line>
+			<staticText>
+				<reportElement mode="Opaque" x="112" y="1" width="147" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="1ba8f1f2-9cd6-4798-8a25-24e6bcd44033"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[produit_reference]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="259" y="1" width="156" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="a9e0b2f7-97f4-47cf-bca0-8603f35f0713"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[produit_deseignation]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="415" y="1" width="140" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="c34567e2-411e-423c-8ed9-52940cf00936"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[produit_stock]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="1" width="112" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="63272609-94a4-4f56-98f0-f06d601f647b"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Code Produit]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="19" width="555" height="1" uuid="d7f9feef-0731-4bb5-ad56-5ced9d863afc"/>
+			</line>
+			<textField>
+				<reportElement x="10" y="0" width="100" height="20" uuid="57536d4a-9b3e-427d-967e-d0a4b7821eef"/>
+				<textFieldExpression><![CDATA[$F{code_produit}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="129" y="0" width="100" height="20" uuid="b67fc477-ef90-4323-acd5-184e92cb0635"/>
+				<textFieldExpression><![CDATA[$F{reference}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="303" y="0" width="100" height="20" uuid="c03677b8-50ef-4d62-8368-d1fd365e8cd8"/>
+				<textFieldExpression><![CDATA[$F{deseignation}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="481" y="0" width="100" height="20" uuid="6c296ac7-9620-49de-9e78-951d29eaac84"/>
+				<textFieldExpression><![CDATA[$F{stock}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band height="17">
+			<textField>
+				<reportElement mode="Opaque" x="0" y="4" width="515" height="13" backcolor="#E6E6E6" uuid="e11ddc57-4e09-4a03-b5e2-01915ff4655c"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement mode="Opaque" x="515" y="4" width="40" height="13" backcolor="#E6E6E6" uuid="d4f5d846-fd7b-430a-bd06-100d1694b28e"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="0" y="4" width="100" height="13" uuid="52024127-42a7-4e67-87e7-a42b3eae28c7"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band/>
+	</summary>
+</jasperReport>

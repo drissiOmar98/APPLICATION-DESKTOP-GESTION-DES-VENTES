@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="fcd234f1-1e0c-4749-9439-e7e9af600c6c">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     boncommande.`id` AS boncommande_id,
+     boncommande.`NumBC` AS boncommande_NumBC,
+     boncommande.`date` AS boncommande_date,
+     boncommande.`idfournisseur` AS boncommande_idfournisseur,
+     boncommande.`idarticle` AS boncommande_idarticle,
+     boncommande.`qte` AS boncommande_qte,
+     boncommande.`prix_Achat` AS boncommande_prix_Achat,
+     boncommande.`Totale` AS boncommande_Totale,
+     boncommande.`TVA` AS boncommande_TVA,
+     societe.`id` AS societe_id,
+     societe.`NomS` AS societe_NomS,
+     societe.`NomResp` AS societe_NomResp,
+     societe.`MatFiscal` AS societe_MatFiscal,
+     societe.`TelFix` AS societe_TelFix,
+     societe.`TelGSM` AS societe_TelGSM,
+     societe.`Fax` AS societe_Fax,
+     societe.`Email` AS societe_Email,
+     societe.`Site` AS societe_Site,
+     societe.`Logo` AS societe_Logo,
+     societe.`Adresse` AS societe_Adresse,
+     fournisseur.`id` AS fournisseur_id,
+     fournisseur.`CodeFournisseur` AS fournisseur_CodeFournisseur,
+     fournisseur.`MatFiscal` AS fournisseur_MatFiscal,
+     fournisseur.`Adresse` AS fournisseur_Adresse,
+     fournisseur.`TelFFix` AS fournisseur_TelFFix,
+     fournisseur.`TelGSM` AS fournisseur_TelGSM,
+     fournisseur.`Fax` AS fournisseur_Fax,
+     fournisseur.`Région` AS fournisseur_Région
+FROM
+     `boncommande` boncommande,
+     `societe` societe,
+     `fournisseur` fournisseur
+WHERE
+     boncommande.`idfournisseur` = fournisseur.`CodeFournisseur`]]>
+	</queryString>
+	<field name="boncommande_NumBC" class="java.lang.Integer"/>
+	<field name="boncommande_date" class="java.sql.Date"/>
+	<field name="boncommande_idfournisseur" class="java.lang.String"/>
+	<field name="boncommande_idarticle" class="java.lang.String"/>
+	<field name="boncommande_qte" class="java.lang.Integer"/>
+	<field name="boncommande_prix_Achat" class="java.lang.Double"/>
+	<field name="boncommande_Totale" class="java.lang.Double"/>
+	<field name="boncommande_TVA" class="java.lang.Integer"/>
+	<field name="fournisseur_MatFiscal" class="java.lang.String"/>
+	<field name="fournisseur_Adresse" class="java.lang.String"/>
+	<field name="fournisseur_TelGSM" class="java.lang.String"/>
+	<field name="fournisseur_Région" class="java.lang.String"/>
+	<field name="societe_NomS" class="java.lang.String"/>
+	<field name="societe_NomResp" class="java.lang.String"/>
+	<field name="societe_MatFiscal" class="java.lang.String"/>
+	<field name="societe_TelFix" class="java.lang.String"/>
+	<field name="societe_Logo" class="java.lang.Object"/>
+	<field name="societe_Adresse" class="java.lang.String"/>
+	<variable name="SumTTC" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{boncommande_Totale}]]></variableExpression>
+	</variable>
+	<group name="boncommande_NumBC">
+		<groupExpression><![CDATA[$F{boncommande_NumBC}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="165" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="183" height="20" uuid="4433d6ab-2cfe-448d-8e0a-b6ba28be1c04"/>
+				<textFieldExpression><![CDATA[$F{societe_NomS}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="20" width="183" height="20" uuid="4cf73f3c-a381-4370-a9ba-0feddb3f9e50"/>
+				<textFieldExpression><![CDATA[$F{societe_MatFiscal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="40" width="183" height="20" uuid="4c30f37e-9e52-445d-a014-f27db7c2b43f"/>
+				<textFieldExpression><![CDATA[$F{societe_TelFix}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="60" width="183" height="20" uuid="2ee667d2-15b5-44f3-ad60-f8b5df48d6fa"/>
+				<textFieldExpression><![CDATA[$F{societe_Adresse}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="106" width="333" height="53" uuid="900e4503-60d8-4782-a9d1-767553b44715"/>
+				<textElement>
+					<font size="34" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Bon de Commande]]></text>
+			</staticText>
+			<image>
+				<reportElement x="278" y="0" width="277" height="64" uuid="d68fac1c-e916-4022-95a1-6b4bc2d71648"/>
+				<imageExpression><![CDATA["B:\\1ere TIC\\JavaProjet\\Gestion_Vente\\Gestion_Vente\\src\\Images\\logocomp.png"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="118" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="12" width="210" height="86" uuid="4badbf7d-e3d3-4fed-bcb1-ea3d4270c7f8"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="304" y="12" width="251" height="86" uuid="1addb5fe-ea35-4eab-95f3-2f55f38906c5"/>
+			</rectangle>
+			<line>
+				<reportElement x="0" y="58" width="210" height="1" uuid="9950679a-1471-4fb1-ac1c-aba88eab85e3"/>
+			</line>
+			<line>
+				<reportElement x="92" y="12" width="1" height="86" uuid="6883ee40-4b4a-4671-9cd2-fe5acf00dc39"/>
+			</line>
+			<staticText>
+				<reportElement x="0" y="17" width="100" height="36" uuid="3d341627-0d98-47eb-a24f-ba31f25cc415"/>
+				<textElement>
+					<font size="24" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Date BC]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="59" width="100" height="34" uuid="670ab5de-d15d-419b-a7dc-79da8f69988a"/>
+				<textElement>
+					<font size="24" isBold="true"/>
+				</textElement>
+				<text><![CDATA[N° BC]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="333" y="24" width="195" height="20" uuid="77fd7915-6979-497b-b34d-ed3ae9d193db"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{boncommande_idfournisseur}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="333" y="46" width="195" height="20" uuid="eb3dd0ef-ee48-4aac-a459-73e27a340b0c"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fournisseur_MatFiscal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="333" y="66" width="195" height="20" uuid="f07a1869-68f0-4793-a32e-4ea274c0e4cd"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fournisseur_Adresse}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="105" y="29" width="60" height="20" uuid="12f645ae-f18f-4be6-8c12-421ed0dda46b"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{boncommande_date}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="105" y="66" width="71" height="20" uuid="d1e916db-c240-4ae1-b91c-ef800971bce0"/>
+				<textFieldExpression><![CDATA[$F{boncommande_NumBC}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="35" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="2" width="100" height="20" uuid="c7cc3403-d8cb-4810-ba24-6d2ff2c36994"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Code P]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="115" y="0" width="100" height="20" uuid="7ce538f4-f820-4764-a3d4-d0ff7e7c942a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Qte]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="343" y="2" width="106" height="20" uuid="97c2707e-fcc3-4568-94b5-eba07cf14c24"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Prix TTC]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="233" y="0" width="100" height="20" uuid="c6803ff7-b3df-457f-9a5e-1ad8b9d4079a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TVA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="465" y="3" width="83" height="20" uuid="34832cf2-b87c-4cd2-a778-3254de245677"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tot TTC]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="21" splitType="Stretch">
+			<textField>
+				<reportElement x="-1" y="0" width="100" height="20" uuid="27778b86-d8ce-4bd7-ae8f-2b77adf04d4c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{boncommande_idarticle}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="114" y="0" width="100" height="20" uuid="85929a2f-ef61-4762-a50d-fc21737d386a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{boncommande_qte}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="348" y="0" width="100" height="20" uuid="d263af0f-b676-4e80-a38c-e86dbdb06140"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{boncommande_prix_Achat}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="232" y="0" width="100" height="20" uuid="98764141-9e8a-41b5-8d49-3cca09c81ebf"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{boncommande_TVA}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="449" y="0" width="100" height="20" uuid="d5774cdd-9953-4b80-a090-979ad53ce951"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{boncommande_Totale}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="112" splitType="Stretch">
+			<rectangle>
+				<reportElement x="309" y="23" width="239" height="70" uuid="3abc5d75-15a0-4237-9f9c-08bff4ff65f1"/>
+			</rectangle>
+			<line>
+				<reportElement x="309" y="57" width="239" height="1" uuid="fc513833-306b-4449-8f9c-0cdfe348acf5"/>
+			</line>
+			<staticText>
+				<reportElement x="321" y="23" width="195" height="36" uuid="7acfa738-8945-47ee-85da-762496709dfd"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="24" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total TTC]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="357" y="59" width="147" height="33" uuid="0beac91a-9d6b-4704-b781-cd17f2fe7945"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{SumTTC}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="99" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
